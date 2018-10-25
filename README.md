@@ -4,13 +4,6 @@
 
 Host: vsinterview.ckdxitur80we.eu-west-1.rds.amazonaws.com
 
-Username: vsuser123
-
-Password: vspassword12345
-
-DB: audit
-
-
 ## DATABASE Table
 
 ```SQL
