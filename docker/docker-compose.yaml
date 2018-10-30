@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  mysql-db:
+    image: mysql:5.7
+    container_name: vsware-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: vsware123
+      MYSQL_USER: vswareuser123
+      MYSQL_PASSWORD: vsware123
+      MYSQL_DATABASE: audit
+    ports:
+      - "3306:3306"
