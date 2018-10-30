@@ -1,0 +1,1 @@
+INSERT INTO event_by_do (`id`, `event_time`,  `tenant`, `user_id`, `operation`, `user_role`, `identifier`, `action`, `entity_id`, `session_id`, `details`) VALUES ('1', '2008-11-11 13:23:44', 'some foo', '24', 'barr', 'admin', '2', 'play', '1', '112234', 'some details');
