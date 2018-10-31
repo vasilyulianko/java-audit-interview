@@ -22,3 +22,5 @@ libraryDependencies ++= Seq(
   "org.apache.httpcomponents" % "httpcore" % "4.4.3" % "test",
   "org.apache.httpcomponents" % "httpclient" % "4.5" % "test"
 )
+lazy val myProject = (project in file("."))
+  .enablePlugins(PlayJava, PlayEbean)

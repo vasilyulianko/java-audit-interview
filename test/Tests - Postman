@@ -1,0 +1,13 @@
+Test create
+
+curl -X POST \
+  http://localhost:9000/create \
+  -H 'Content-Type: application/json' \
+  -H 'cache-control: no-cache' \
+  -d '{
+"id" : 154,
+"tenant" : 1,
+"userId" : 123
+....
+}'
+

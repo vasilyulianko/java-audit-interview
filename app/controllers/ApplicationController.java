@@ -1,18 +1,30 @@
 package controllers;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 import javax.inject.Inject;
-import play.api.db.Database;
+
+import com.avaje.ebean.annotation.Transactional;
+import models.AuditEvent;
+import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.*;
+import com.fasterxml.jackson.databind.JsonNode;
+import play.libs.Json;
 
 public class ApplicationController extends Controller {
 
-    public Result index() throws SQLException {
-        return ok("Hello world");
+    @Transactional
+    public Result create() throws SQLException {
+        JsonNode json = request().body().asJson();
+        final AuditEvent auditEvent = Json.fromJson(json, AuditEvent.class);
+        auditEvent.save();
+        return ok("");
     }
-    
+
+    public Result list() throws SQLException {
+        List<AuditEvent> auditEventList = AuditEvent.find.all();
+        return ok(play.libs.Json.toJson(auditEventList));
+    }
+
 }
             
