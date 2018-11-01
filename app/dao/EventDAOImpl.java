@@ -17,7 +17,7 @@ public class EventDAOImpl extends BaseDAOImpl<EventModel> implements EventDAO {
 
     @Override
     public String[] getTableDefinition() {
-        return new String[]{"id","tenant","user_id","event_time","operation","user_role","identifier","action","entity",
+        return new String[]{"tenant","user_id","event_time","operation","user_role","identifier","action","entity",
                 "entity_id","session_id","details"};
     }
 
@@ -56,9 +56,12 @@ public class EventDAOImpl extends BaseDAOImpl<EventModel> implements EventDAO {
 
     private String getDate(java.util.Date event_time) {
 
-        String pattern = "yyyy-MM-dd";
-        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
-        return formatter.format(event_time);
+        if (event_time != null){
+            String pattern = "yyyy-MM-dd";
+            SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+            return formatter.format(event_time);
+        }
+        return null;
     }
 
     @Override
