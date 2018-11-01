@@ -8,6 +8,8 @@ import java.util.Date;
 public class EventModel extends BaseModel {
 
 
+    public EventModel(){}
+
     private int tenant;
     private int user_id;
     private Date event_time;

@@ -1,9 +1,10 @@
 package dao;
 
-import model.BaseModel;
+
+import model.EventModel;
 
 
-public interface EventDAO<ENTTY extends BaseModel> extends BaseDAO<ENTITY> {
+public interface EventDAO extends BaseDAO<EventModel> {
 
 
 }

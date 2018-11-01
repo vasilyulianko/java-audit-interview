@@ -1,18 +1,18 @@
 package dao;
 
-import model.BaseModel;
-import model.EventModel;
 
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import model.EventModel;
+import org.apache.commons.lang3.StringUtils;
+
+import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 /**
  * DAO class to manage event table
  * On real apps this class normally will extend from a BaseDAO class with common logic
  */
-public class EventDAOImpl<EventModel> extends BaseDAOImpl implements EventDAO {
+public class EventDAOImpl extends BaseDAOImpl<EventModel> implements EventDAO {
 
 
     @Override
@@ -24,8 +24,41 @@ public class EventDAOImpl<EventModel> extends BaseDAOImpl implements EventDAO {
 
 
     @Override
-    public boolean insert(EventModel eventModel) throws SQLException {
-        return false;
+    public boolean insert(model.EventModel entity) throws SQLException {
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            conn = datasource.getConnection();
+            ps = conn.prepareStatement(getSaveQuery());
+            int i = 1;
+            ps.setInt(i++, entity.getTenant());
+            ps.setInt(i++, entity.getUser_id());
+            ps.setString(i++, getDate(entity.getEvent_time()));
+            ps.setString(i++, entity.getOperation());
+            ps.setString(i++, entity.getUser_role());
+            ps.setInt(i++, entity.getIdentifier());
+            ps.setString(i++, entity.getAction());
+            ps.setString(i++, entity.getEntity());
+            ps.setInt(i++, entity.getEntity_id());
+            ps.setString(i++, entity.getSession_id());
+            ps.setString(i++, entity.getDetails());
+            ps.executeUpdate();
+
+        } finally {
+            close(conn, ps, rs);
+        }
+
+        return true;
+    }
+
+    private String getDate(java.util.Date event_time) {
+
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat formatter = new SimpleDateFormat(pattern);
+        return formatter.format(event_time);
     }
 
     @Override
@@ -46,9 +79,12 @@ public class EventDAOImpl<EventModel> extends BaseDAOImpl implements EventDAO {
 
     private java.util.Date getDate(Date event_time) {
 
-        GregorianCalendar gc = new GregorianCalendar();
-        gc.setTimeInMillis(event_time.getTime());
-        return gc.getTime();
+        if (event_time != null && !"".equals(event_time)) {
+            GregorianCalendar gc = new GregorianCalendar();
+            gc.setTimeInMillis(event_time.getTime());
+            return gc.getTime();
+        }
+        return null;
     }
 
     @Override

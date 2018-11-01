@@ -1,7 +1,9 @@
 package dao;
 
 import model.BaseModel;
+import play.db.Database;
 
+import javax.inject.Inject;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +57,46 @@ public abstract class BaseDAOImpl<ENTITY extends BaseModel> implements  BaseDAO<
         return list;
     }
 
+    /**
+     * Create a save query using the table definition If the table definition is
+     * empty it will return an error
+     *
+     * @return Insert query definition
+     */
+    protected String getSaveQuery() throws SQLException {
+
+        String[] tableDefinition = getTableDefinition();
+
+        // make sure we have some table definition
+        if (tableDefinition == null || tableDefinition.length == 0) {
+            throw new SQLException(
+                    "Imposible to save datas, there is no defintion for table "
+                            + getTableName());
+        }
+
+        StringBuilder saveQuery = new StringBuilder();
+        StringBuilder placeholders = new StringBuilder();
+
+        String comma = "";
+        String questionMark = "?";
+
+        saveQuery.append("insert into " + getTableName() + " (");
+        for (String column : tableDefinition) {
+            saveQuery.append(comma);
+            saveQuery.append(column);
+            placeholders.append(comma);
+            placeholders.append(questionMark);
+            comma = ",";
+        }
+
+        saveQuery.append(" )");
+        saveQuery.append(" values ( ");
+        saveQuery.append(placeholders);
+        saveQuery.append(" ) ");
+
+        return saveQuery.toString();
+    }
+
 
 
     /**
@@ -72,18 +114,6 @@ public abstract class BaseDAOImpl<ENTITY extends BaseModel> implements  BaseDAO<
         close(conn);
     }
 
-    /**
-     * Close all resources in the database
-     *
-     * @param ps
-     * @param rs
-     */
-    protected void close(PreparedStatement ps, ResultSet rs) {
-
-        close(rs);
-        close(ps);
-
-    }
 
     /**
      * Close database connection
@@ -117,6 +147,22 @@ public abstract class BaseDAOImpl<ENTITY extends BaseModel> implements  BaseDAO<
             }
         }
 
+    }
+
+    /**
+     * Close database resultset
+     *
+     * @param rs
+     */
+    protected void close(ResultSet rs) {
+
+        if (rs != null) {
+            try {
+                rs.close();
+                rs = null;
+            } catch (SQLException e) {
+            }
+        }
     }
 
 
