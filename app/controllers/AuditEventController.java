@@ -1,17 +1,21 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
+import models.AuditEvent;
+import play.libs.Json;
 import play.libs.concurrent.HttpExecutionContext;
+import play.mvc.Controller;
 import play.mvc.Result;
 import repositories.AuditEventRepository;
 
+import java.time.Instant;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 
 import static play.libs.Json.toJson;
-import static play.mvc.Results.ok;
 
-public class AuditEventController {
+public class AuditEventController extends Controller {
 
 
 	private final AuditEventRepository auditEventRepository;
@@ -27,5 +31,14 @@ public class AuditEventController {
 		return auditEventRepository.list()
 				.thenApplyAsync(auditStream -> ok(toJson(auditStream.collect(Collectors.toList()))), ec.current());
 
+	}
+
+	public CompletionStage<Result> create() {
+		JsonNode json = request().body().asJson();
+		AuditEvent auditEvent = Json.fromJson(json, AuditEvent.class);
+		auditEvent.setDetails(auditEvent.toString());
+		return auditEventRepository.add(auditEvent).thenApplyAsync(savedResource -> {
+			return created(Json.toJson(savedResource));
+		}, ec.current());
 	}
 }
