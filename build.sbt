@@ -9,7 +9,9 @@ scalaVersion := "2.11.8"
 libraryDependencies ++= Seq(
   javaJdbc,
   evolutions,
+  javaJpa,
   "mysql" % "mysql-connector-java" % "5.1.41",
+  "org.hibernate" % "hibernate-core" % "5.2.17.Final",
 
   //Testing library's
   "org.scalatest" %% "scalatest" % "2.2.1" % "test",
