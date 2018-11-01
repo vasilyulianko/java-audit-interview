@@ -9,7 +9,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import repositories.AuditEventRepository;
 
-import java.time.Instant;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 
