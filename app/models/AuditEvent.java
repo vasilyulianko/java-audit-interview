@@ -1,7 +1,7 @@
 package models;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.Instant;
 
 @Entity
 @Table(name = "event_by_karol")
@@ -14,16 +14,16 @@ public class AuditEvent {
 	@Column(nullable = false)
 	private Long tenant;
 
-	@Column(name = "user_id", nullable = false)
+	@Column(name = "user_id")
 	private Long userId;
 
 	@Column(name = "event_time", nullable = false)
-	private Date eventTime;
+	private Instant eventTime;
 
 	@Column(nullable = false)
 	private String operation;
 
-	@Column(name = "user_role", nullable = false)
+	@Column(name = "user_role")
 	private String userRole;
 
 	private Long identifier;
@@ -60,11 +60,11 @@ public class AuditEvent {
 		this.tenant = tenant;
 	}
 
-	public Date getEventTime() {
+	public Instant getEventTime() {
 		return eventTime;
 	}
 
-	public void setEventTime(Date eventTime) {
+	public void setEventTime(Instant eventTime) {
 		this.eventTime = eventTime;
 	}
 

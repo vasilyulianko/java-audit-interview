@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 @ImplementedBy(JpaAuditEventRepository.class)
 public interface AuditEventRepository {
 
-	CompletionStage<AuditEvent> add(AuditEvent person);
+	CompletionStage<AuditEvent> add(AuditEvent auditEvent);
 
 	CompletionStage<Stream<AuditEvent>> list();
 
