@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "vsware",
+		"_postman_id": "64026f27-dfeb-bbfe-770d-394b1f3f858f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:9000/create",
+			"request": {
+				"url": "localhost:9000/create",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"tenant\": 111,\n\t\"userId\": 10,\n\t\"userRole\": \"admin\",\n\t\"sessionId\": \"12345678\",\n\t\"eventTime\": \"2018-11-01T17:21:00Z\",\n\t\"action\": \"POST\",\n\t\"operation\": \"/create\"\n}"
+				},
+				"description": "Creates an AuditEvent"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9000/events",
+			"request": {
+				"url": "localhost:9000/events",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Getting list of audit events "
+			},
+			"response": []
+		}
+	]
+}
