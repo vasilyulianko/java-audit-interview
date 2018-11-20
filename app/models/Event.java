@@ -7,6 +7,8 @@ import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 
+import com.fasterxml.jackson.annotation.*;
+
 @Entity
 @Table(name = "event_by_user_maire")
 public class Event extends Model {
@@ -19,6 +21,7 @@ public class Event extends Model {
 
     public Long user_id;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
     @Formats.DateTime(pattern="dd/MM/yyyy hh:mm:ss")
     public Date event_time = new Date();
 
