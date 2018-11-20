@@ -8,7 +8,7 @@ Host: vsinterview.ckdxitur80we.eu-west-1.rds.amazonaws.com
 
 ```SQL
 
-CREATE TABLE event_by_user (
+CREATE TABLE event_by_user_maire (
 	id INT(11) AUTO_INCREMENT,
     tenant INT(11),
     user_id INT(11),
