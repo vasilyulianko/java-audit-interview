@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.*;
 public class Event extends Model {
 
     @Id
-    @Constraints.Min(11)
+    @Constraints.MinLength(11)
     private Long id;
 
     public Long tenant;
