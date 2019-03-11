@@ -8,7 +8,7 @@ scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
   javaJdbc,
-  evolutions,
+//  evolutions,
   "mysql" % "mysql-connector-java" % "5.1.41",
 
   //Testing library's
@@ -22,3 +22,10 @@ libraryDependencies ++= Seq(
   "org.apache.httpcomponents" % "httpcore" % "4.4.3" % "test",
   "org.apache.httpcomponents" % "httpclient" % "4.5" % "test"
 )
+libraryDependencies += guice
+libraryDependencies += javaJdbc
+libraryDependencies += javaJpa
+libraryDependencies += "com.h2database" % "h2" % "1.4.197"
+libraryDependencies += "org.hibernate" % "hibernate-core" % "5.4.0.Final"
+
+PlayKeys.externalizeResourcesExcludes += baseDirectory.value / "conf" / "META-INF" / "persistence.xml"
