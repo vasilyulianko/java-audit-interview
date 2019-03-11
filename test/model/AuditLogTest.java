@@ -1,4 +1,4 @@
-package test.model; 
+package model;
 
 import model.AuditLog;
 import org.junit.Test;
