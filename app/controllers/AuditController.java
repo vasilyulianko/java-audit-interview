@@ -46,7 +46,7 @@ public class AuditController extends Controller {
 
 		return auditRepository
 				.add(audit)
-				.thenApplyAsync(p -> redirect(routes.AuditController.index()), ec.current());
+				.thenApplyAsync(p -> redirect(routes.AuditController.getAudits()), ec.current());
 	}
 
 
@@ -55,7 +55,7 @@ public class AuditController extends Controller {
 	}
 
 
-	public CompletionStage<Result> getClasses() {
+	public CompletionStage<Result> getAudits() {
 		return auditRepository
 				.list()
 				//	.thenApplyAsync(personStream -> ok(toJson(personStream.collect(Collectors.toList()))), ec.current());

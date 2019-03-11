@@ -4,6 +4,7 @@ import play.db.jpa.JPAApi;
 
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -44,11 +45,16 @@ public class JPAAuditRepository implements AuditRepository {
 		em.persist(auditLog);
 		return auditLog;
 	}
+
 	@Override
 	public CompletionStage<Stream<AuditLog>> list() {
-		return null;
+		return supplyAsync(() -> wrap(em -> list(em)), executionContext);
 	}
 
+	private Stream<AuditLog> list(EntityManager em) {
+		List<AuditLog> auditLogs = em.createQuery("select p from event_by_john  p", AuditLog.class).getResultList();
+		return auditLogs.stream();
+	}
 	private <T> T wrap(Function<EntityManager, T> function) {
 		return jpaApi.withTransaction(function);
 	}
