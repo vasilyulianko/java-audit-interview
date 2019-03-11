@@ -46,7 +46,7 @@ public class AuditController extends Controller {
 
 		return auditRepository
 				.add(audit)
-				.thenApplyAsync(p -> redirect(routes.AuditController.getAudits()), ec.current());
+				.thenApplyAsync(p -> ok(" Successfully added audit"));
 	}
 
 
