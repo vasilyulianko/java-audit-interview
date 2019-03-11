@@ -14,7 +14,7 @@ libraryDependencies ++= Seq(
   //Testing library's
   "org.scalatest" %% "scalatest" % "2.2.1" % "test",
   "org.scalatestplus" %% "play" % "1.4.0-M3" % "test",
-  "org.mockito" % "mockito-core" % "1.10.19" % "test",
+  "org.mockito" % "mockito-core" % "2.23.4" % "test",
   "org.easymock" % "easymock" % "3.0" % "test",
 
   // Testing library for acceptance tests, conflicts occur without explicit httpcomponents imports
