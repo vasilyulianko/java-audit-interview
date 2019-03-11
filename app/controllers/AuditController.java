@@ -1,11 +1,14 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import model.AuditLog;
 import model.AuditRepository;
 import play.data.Form;
 import play.data.FormFactory;
 import play.libs.Json;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 
 import javax.inject.Inject;
@@ -33,6 +36,19 @@ public class AuditController extends Controller {
 		this.ec = ec;
 
 	}
+
+	public  CompletionStage<Result>  addAudit(final Http.Request request) {
+
+		JsonNode json = request().body().asJson();
+
+
+		AuditLog audit = Json.fromJson(json, AuditLog.class);
+
+		return auditRepository
+				.add(audit)
+				.thenApplyAsync(p -> redirect(routes.AuditController.index()), ec.current());
+	}
+
 
 	public Result index() throws SQLException {
 		return ok("Hello world audit");

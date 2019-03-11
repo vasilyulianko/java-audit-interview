@@ -9,3 +9,4 @@ GET     /                           controllers.ApplicationController.index()
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 GET     /audits                    controllers.AuditController.index()
+PUT     /audit                    controllers.AuditController.addAudit(req: Request)

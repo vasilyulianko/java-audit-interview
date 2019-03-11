@@ -1,5 +1,6 @@
 package model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,26 +12,33 @@ import java.util.Date;
  * @author John Stamp
  */
 
-@Entity
+@Entity(name =	"event_by_john")
 public class AuditLog {
+
 	@Id
 	@GeneratedValue
 	private Long id;
 
+	@Column(name = "tenant")
 	Integer tenant;
-	Integer user_id;
+	@Column(name = "user_id")
+	Integer userId;
 
-	Date event_time;
+//	Date event_time;
 
 	String operation;
-	String user_role;
+
+	@Column(name = "user_role")
+	String userRole;
 
 	Integer identifier;
 
 	String action;
 	String entity;
-	Integer entity_id;
-	String session_id;
+	@Column(name = "entity_id")
+	Integer entityId;
+	@Column(name = "session_id")
+	String sessionId;
 
 	String details;
 
@@ -51,20 +59,12 @@ public class AuditLog {
 		this.tenant = tenant;
 	}
 
-	public Integer getUser_id() {
-		return user_id;
+	public Integer getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
-	}
-
-	public Date getEvent_time() {
-		return event_time;
-	}
-
-	public void setEvent_time(Date event_time) {
-		this.event_time = event_time;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 	public String getOperation() {
@@ -75,12 +75,12 @@ public class AuditLog {
 		this.operation = operation;
 	}
 
-	public String getUser_role() {
-		return user_role;
+	public String getUserRole() {
+		return userRole;
 	}
 
-	public void setUser_role(String user_role) {
-		this.user_role = user_role;
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
 	}
 
 	public Integer getIdentifier() {
@@ -107,20 +107,20 @@ public class AuditLog {
 		this.entity = entity;
 	}
 
-	public Integer getEntity_id() {
-		return entity_id;
+	public Integer getEntityId() {
+		return entityId;
 	}
 
-	public void setEntity_id(Integer entity_id) {
-		this.entity_id = entity_id;
+	public void setEntityId(Integer entityId) {
+		this.entityId = entityId;
 	}
 
-	public String getSession_id() {
-		return session_id;
+	public String getSessionId() {
+		return sessionId;
 	}
 
-	public void setSession_id(String session_id) {
-		this.session_id = session_id;
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
 
 	public String getDetails() {
@@ -130,22 +130,5 @@ public class AuditLog {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-
-	@Override
-	public String toString() {
-		return "AuditLog{" +
-				"id=" + id +
-				", tenant=" + tenant +
-				", user_id=" + user_id +
-				", event_time=" + event_time +
-				", operation='" + operation + '\'' +
-				", user_role='" + user_role + '\'' +
-				", identifier=" + identifier +
-				", action='" + action + '\'' +
-				", entity='" + entity + '\'' +
-				", entity_id=" + entity_id +
-				", session_id='" + session_id + '\'' +
-				", details='" + details + '\'' +
-				'}';
-	}
 }
+

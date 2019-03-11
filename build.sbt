@@ -28,4 +28,7 @@ libraryDependencies += javaJpa
 libraryDependencies += "com.h2database" % "h2" % "1.4.197"
 libraryDependencies += "org.hibernate" % "hibernate-core" % "5.4.0.Final"
 
+libraryDependencies += "junit" % "junit" % "4.13-beta-1"
+
+
 PlayKeys.externalizeResourcesExcludes += baseDirectory.value / "conf" / "META-INF" / "persistence.xml"
