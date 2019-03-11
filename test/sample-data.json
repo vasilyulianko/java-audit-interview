@@ -1,0 +1,9 @@
+{"tenant":"123","userId":"23",
+  "operation":"click",
+  "userRole":"teacher",
+  "identifier":"1234567",
+  "action":"click",
+  "operation":"click",
+  "entity":"school","entityId":"12345",
+  "sessionId":"12345","details":"new student created"
+}
