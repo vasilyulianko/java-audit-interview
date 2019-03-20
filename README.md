@@ -1,4 +1,7 @@
 # auditinterview
+## Task description
+Send the information to the audit service and store into the database.
+Write a test to verify.
 
 ## MYSQL Details
 
