@@ -13,11 +13,11 @@ import java.util.stream.Stream;
  */
 public class EventResourceHandler {
 
-    private final PostRepository repository;
+    private final EventRepository repository;
     private final HttpExecutionContext ec;
 
     @Inject
-    public EventResourceHandler(PostRepository repository, HttpExecutionContext ec) {
+    public EventResourceHandler(EventRepository repository, HttpExecutionContext ec) {
         this.repository = repository;
         this.ec = ec;
     }

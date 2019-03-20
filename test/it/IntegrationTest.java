@@ -9,7 +9,7 @@ import play.mvc.Http;
 import play.mvc.Result;
 import play.test.WithApplication;
 import v1.post.EventData;
-import v1.post.PostRepository;
+import v1.post.EventRepository;
 import v1.post.EventResource;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -26,8 +26,10 @@ public class IntegrationTest extends WithApplication {
 
     @Test
     public void testList() {
-        PostRepository repository = app.injector().instanceOf(PostRepository.class);
-        repository.create(new EventData());
+        EventRepository repository = app.injector().instanceOf(EventRepository.class);
+        EventData data = new EventData();
+        data.tenant = "tenant";
+        repository.create());
 
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
@@ -40,7 +42,7 @@ public class IntegrationTest extends WithApplication {
 
     @Test
     public void testCircuitBreakerOnShow() {
-        PostRepository repository = app.injector().instanceOf(PostRepository.class);
+        EventRepository repository = app.injector().instanceOf(EventRepository.class);
         repository.create(new EventData());
 
         Http.RequestBuilder request = new Http.RequestBuilder()

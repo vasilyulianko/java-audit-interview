@@ -8,10 +8,10 @@ import javax.inject.Inject;
 /**
  * Custom execution context wired to "post.repository" thread pool
  */
-public class PostExecutionContext extends CustomExecutionContext {
+public class EventExecutionContext extends CustomExecutionContext {
 
     @Inject
-    public PostExecutionContext(ActorSystem actorSystem) {
+    public EventExecutionContext(ActorSystem actorSystem) {
         super(actorSystem, "post.repository");
     }
 }

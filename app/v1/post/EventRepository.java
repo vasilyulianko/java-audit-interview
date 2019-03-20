@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Stream;
 
-public interface PostRepository {
+public interface EventRepository {
 
     CompletionStage<Stream<EventData>> list();
 

@@ -10,14 +10,14 @@ import java.util.List;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 
-@With(PostAction.class)
-public class PostController extends Controller {
+@With(EventAction.class)
+public class EventController extends Controller {
 
     private HttpExecutionContext ec;
     private EventResourceHandler handler;
 
     @Inject
-    public PostController(HttpExecutionContext ec, EventResourceHandler handler) {
+    public EventController(HttpExecutionContext ec, EventResourceHandler handler) {
         this.ec = ec;
         this.handler = handler;
     }

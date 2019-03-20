@@ -21,14 +21,14 @@ import static java.util.concurrent.CompletableFuture.supplyAsync;
  * and circuit breaker.
  */
 @Singleton
-public class JPAPostRepository implements PostRepository {
+public class JPAEventRepository implements EventRepository {
 
     private final JPAApi jpaApi;
-    private final PostExecutionContext ec;
+    private final EventExecutionContext ec;
     private final CircuitBreaker circuitBreaker = new CircuitBreaker().withFailureThreshold(1).withSuccessThreshold(3);
 
     @Inject
-    public JPAPostRepository(JPAApi api, PostExecutionContext ec) {
+    public JPAEventRepository(JPAApi api, EventExecutionContext ec) {
         this.jpaApi = api;
         this.ec = ec;
     }
