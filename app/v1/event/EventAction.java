@@ -1,4 +1,4 @@
-package v1.post;
+package v1.event;
 
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.MetricRegistry;

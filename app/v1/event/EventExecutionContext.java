@@ -1,4 +1,4 @@
-package v1.post;
+package v1.event;
 
 import akka.actor.ActorSystem;
 import play.libs.concurrent.CustomExecutionContext;
@@ -6,7 +6,7 @@ import play.libs.concurrent.CustomExecutionContext;
 import javax.inject.Inject;
 
 /**
- * Custom execution context wired to "post.repository" thread pool
+ * Custom execution context wired to "event.repository" thread pool
  */
 public class EventExecutionContext extends CustomExecutionContext {
 

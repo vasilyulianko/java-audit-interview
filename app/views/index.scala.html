@@ -15,24 +15,24 @@
     </p>
 
     <p>
-      To see all posts, you can do a GET:
+      To see all events, you can do a GET:
     </p>
 
 
 <pre>
-    <code>http GET localhost:9000/v1/posts/</code>
+    <code>http GET localhost:9000/v1/events/</code>
 </pre>
 
     <p>
-      To create new posts, do a post
+      To create new events, do a post
     <p>
 
 <pre>
-    <code>http POST localhost:9000/v1/posts/ title="Some title" body="Some Body"</code>
+    <code>http POST localhost:9000/v1/events/ {"userId": 1,"eventTime": [2019,3,20,10,35,55],"userRole": "role","details": "details"}</code>
 </pre>
 
 <p>
-  You can always look at the API directly: <a href="/v1/posts/">/v1/posts</a>
+  You can always look at the API directly: <a href="/v1/events/">/v1/events</a>
 </p>
 
   </body>

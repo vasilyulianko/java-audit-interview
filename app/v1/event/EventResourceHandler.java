@@ -1,4 +1,4 @@
-package v1.post;
+package v1.event;
 
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Http;
@@ -9,7 +9,7 @@ import java.util.concurrent.CompletionStage;
 import java.util.stream.Stream;
 
 /**
- * Handles presentation of Post resources, which map to JSON.
+ * Handles presentation of Event resources, which map to JSON.
  */
 public class EventResourceHandler {
 

@@ -1,16 +1,13 @@
 package it;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import play.Application;
 import play.inject.guice.GuiceApplicationBuilder;
-import play.libs.Json;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.test.WithApplication;
-import v1.post.EventData;
-import v1.post.EventRepository;
-import v1.post.EventResource;
+import v1.event.EventData;
+import v1.event.EventRepository;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -28,16 +25,16 @@ public class IntegrationTest extends WithApplication {
     public void testList() {
         EventRepository repository = app.injector().instanceOf(EventRepository.class);
         EventData data = new EventData();
-        data.tenant = "tenant";
-        repository.create());
+        data.tenant = 1L;
+        repository.create(data);
 
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
-                .uri("/v1/posts");
+                .uri("/v1/events");
 
         Result result = route(app, request);
-        final String body = contentAsString(result);
-        assertThat(body, containsString("body"));
+        final String tenant = contentAsString(result);
+        assertThat(tenant, containsString("tenant"));
     }
 
     @Test
@@ -47,11 +44,9 @@ public class IntegrationTest extends WithApplication {
 
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
-                .uri("/v1/posts/1");
+                .uri("/v1/events/1");
 
         Result result = route(app, request);
         assertThat(result.status(), equalTo(SERVICE_UNAVAILABLE));
     }
-
-
 }

@@ -1,4 +1,4 @@
-package v1.post;
+package v1.event;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import play.libs.Json;
