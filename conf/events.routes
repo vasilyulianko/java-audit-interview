@@ -1,0 +1,5 @@
+
+GET    /                     v1.event.EventController.list(request:Request)
+POST   /                     v1.event.EventController.create(request:Request)
+
+GET    /:id                 v1.event.EventController.show(request:Request,id)
