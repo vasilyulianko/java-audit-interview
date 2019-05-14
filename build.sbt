@@ -2,13 +2,15 @@ name := """vsware-event-service"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava)
+lazy val root = (project in file(".")).enablePlugins(PlayJava,PlayEbean)
 
 scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
   javaJdbc,
   evolutions,
+  guice,
+  "io.ebean" % "ebean" % "11.38.1",
   "mysql" % "mysql-connector-java" % "5.1.41",
 
   //Testing library's
