@@ -1,0 +1,23 @@
+@(audit: Form[Audit])
+@import helper._
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Audit</title>
+</head>
+<body>
+        @helper.form(action = routes.AuditController.save()){
+            @helper.inputText(audit("tenant"))
+            @helper.inputText(audit("user_id"))
+            @helper.inputText(audit("operation"))
+            @helper.inputText(audit("user_role"))
+            @helper.inputText(audit("identifier"))
+            @helper.inputText(audit("action"))
+            @helper.inputText(audit("details"))
+
+             <button type="submit">Create Audit</button>
+        }
+
+</body>
+</html>

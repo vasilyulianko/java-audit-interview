@@ -1,0 +1,21 @@
+@(audits: List[Audit])
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Audits</title>
+</head>
+<body>
+@for(audit <-audits){
+    <p> Tenant: @audit.getTenant</p>
+    <p> UserID: @audit.getUser_id</p>
+    <p> Operation: @audit.getOperation</p>
+    <p> UserRole: @audit.getUser_role</p>
+    <p> Identifier: @audit.getIdentifier</p>
+    <p> Action: @audit.getAction</p>
+    <p> Details: @audit.getDetails</p>
+
+}
+
+</body>
+</html>
