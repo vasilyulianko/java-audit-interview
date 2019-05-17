@@ -11,7 +11,7 @@ Host: vsinterview.ckdxitur80we.eu-west-1.rds.amazonaws.com
 
 ```SQL
 
-CREATE TABLE event_by_user (
+CREATE TABLE audit_lucas (
 	id INT(11) AUTO_INCREMENT,
     tenant INT(11),
     user_id INT(11),
@@ -20,9 +20,6 @@ CREATE TABLE event_by_user (
     user_role varchar(255),
     identifier INT(11),
     action varchar(255),
-    entity varchar(255),
-    entity_id INT(11),
-    session_id varchar(255),
     details longtext,
     PRIMARY KEY (id)
 );
