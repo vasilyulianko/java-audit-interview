@@ -3,8 +3,13 @@
 # ~~~~
 
 # Default path will just redirect to the computer list
-GET     /                           controllers.ApplicationController.index()
+GET         /                    controllers.ApplicationController.index()
+
+GET         /list                controllers.ApplicationController.list()
+
+GET         /create              controllers.ApplicationController.create()
+POST        /create              controllers.ApplicationController.save()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET         /assets/*file        controllers.Assets.at(path="/public", file)
 
