@@ -1,0 +1,38 @@
+@(eventForm: Form[Event])
+@import helper._
+
+<html>
+    <head>
+        <title>Create Event</title>
+    </head>
+
+    <body>
+        <h1>Create Event</h1>
+
+
+        @*        <form action="/books/create" method="POST">*@
+        @*            *@
+
+        @*//        @helper.form(action = routes.BooksController.save()){*@
+
+        @*        </form>*@
+
+
+
+
+
+        @helper.form(action = routes.ApplicationController.save()) {
+            @helper.inputText(eventForm("id"))
+            @helper.inputText(eventForm("tenant"))
+            @helper.inputText(eventForm("user_id"))
+            @helper.inputText(eventForm("event_time"))
+            @helper.inputText(eventForm("operation"))
+            @helper.inputText(eventForm("user_role"))
+
+            <input type="submit" value="Create eventForm">
+            }
+
+
+
+
+    </body>

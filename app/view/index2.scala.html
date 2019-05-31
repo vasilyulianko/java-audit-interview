@@ -1,0 +1,21 @@
+@(events: List[Event])
+
+<html>
+    <head>
+        <title>All Events</title>
+    </head>
+
+    <body>
+        <h1>All Events</h1>
+
+
+        @for(event <- events){
+            <a href="#">@event.tenant</a>
+            <p>User id: @event.user_id</p>
+            <p>Timestamp: @event.event_time</p>
+            <p>Operation: @event.operation</p>
+            <p>User role: @event.user_role</p>
+        }
+
+    </body>
+</html>
